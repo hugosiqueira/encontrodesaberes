@@ -1,0 +1,521 @@
+.start-button {
+	padding-left: 4px !important;
+	button-icon-spacing: 98px !important;
+}
+
+.icon-events {
+	background-image: url(icons/events.png) !important;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+
+.icon-email {
+	background-image: url(icons/icon-email.png) !important;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+.br-flag-icon {
+	background-image: url(icons/br-flag.png) !important;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+
+.oth-flag-icon {
+	background-image: url(icons/oth-flag.png) !important;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+
+.icon-save {
+	background-image: url(icons/save.png) !important;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+
+.icon-excel {
+	background-image: url(icons/excel.png) !important;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+
+.icon-chart {
+	background-image: url(icons/chart.png) !important;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+
+.icon-add {
+	background-image: url(icons/add.png) !important;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+
+.icon-send {
+	background-image: url(icons/send.png) !important;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+
+.icon-barcode {
+	background-image: url(icons/barcode.png) !important;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+
+.icon-barcode-white {
+	background-image: url(icons/barcode-white.png) !important;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+
+.icon-login_as {
+	background-image: url(icons/login_as.png) !important;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+.icon-delete {
+	background-image: url(icons/delete.png) !important;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+
+.icon-justificativa_enviada {
+	background-image: url(icons/justificativa_enviada.png) !important;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+.icon-justificativa_aceita {
+	background-image: url(icons/justificativa_aceita.png) !important;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+.icon-justificativa_rejeitada {
+	background-image: url(icons/justificativa_rejeitada.png) !important;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+
+.icon-edit {
+	background-image: url(icons/edit.png) !important;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+
+.icon-fast {
+	background-image: url(icons/fast.png) !important;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+
+.icon-chain {
+	background-image: url(icons/chain.png) !important;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+
+.icon-update {
+	background-image: url(icons/update.png) !important;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+
+.icon-cancel {
+	background-image: url(icons/cancel.png) !important;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+
+.icon-active {
+	background-image: url(icons/active.png) !important;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+
+.icon-inactive {
+	background-image: url(icons/inactive.png) !important;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+
+.icon-publish {
+	background-image: url(icons/publish.png) !important;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+
+.icon-unpublish {
+	background-image: url(icons/unpublish.png) !important;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+
+.icon-print {
+	background-image: url(icons/print.png) !important;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+
+.icon-rank {
+	background-image: url(icons/rank.png) !important;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+
+.icon-info {
+	background-image: url(icons/info.png) !important;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+
+.icon-clear {
+	background-image: url(icons/broom.png) !important;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+
+.icon-search {
+	background-image: url(icons/search.png) !important;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+
+.icon-search-white {
+	background-image: url(icons/search-white.png) !important;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+
+.icon-access {
+	background-image: url(icons/access.png) !important;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+
+.icon-def-theme {
+	background-image: url(icons/def-theme.png) !important;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+
+.icon-groups {
+	background-image: url(icons/groups.png) !important;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+
+.icon-lock {
+	background-image: url(icons/lock.png) !important;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+
+.icon-unlock {
+	background-image: url(icons/unlock.png) !important;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+
+.icon-check {
+	background-image: url(icons/check.png) !important;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+
+.icon-none {
+	background-image: url(icons/none.png) !important;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+
+.icon-inscrito_semServicos {
+	background-image: url(icons/pg_none.png) !important;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+
+.icon-highlight {
+	background-image: url(icons/highlight.png) !important;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+
+.icon-lowlight {
+	background-image: url(icons/lowlight.png) !important;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+
+.icon-published {
+	background-image: url(icons/published.png) !important;	
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+.icon-boleto_cancelado {
+	background-image: url(icons/boleto_cancelado.png) !important;	
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+
+.tag-aguardando {
+	background-image: url(icons/aguardando.png) !important;	
+	background-repeat: no-repeat;
+	background-position: right; 
+}
+
+.tag-vencido {
+	background-image: url(icons/vencido.png) !important;	
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+
+.icon-boleto_inadimplente {
+	background-image: url(icons/pg_bad.png) !important;	
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+
+.icon-boleto_confirmado {
+	background-image: url(icons/pg_ok.png) !important;	
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+
+.tag-pago{
+	background-image: url(icons/pago.png) !important;	
+	background-repeat: no-repeat;
+	background-position: right; 
+}
+
+.icon-aguardando_submissao{
+	background-image: url(icons/aguardando_submissao.png) !important;	
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+
+.icon-pg-add {
+	background-image: url(icons/pg_add.png) !important;	
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+
+.icon-unpublished {
+	background-image: url(icons/unpublished.png) !important;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+
+.icon-pdf {
+	background-image: url(icons/pdf.png) !important;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+
+.icon-eye {
+	background-image: url(icons/eye.png) !important;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+
+.icon-seal {
+	background-image: url(icons/seal.png) !important;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+
+.icon-service {
+	background-image: url(icons/service.png) !important;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+
+.icon-naoapresentado {
+	background-image: url(icons/nao_apresentado.png) !important;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+.icon-apresentacao_oral {
+	background-image: url(icons/apresentacao_oral.png) !important;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+
+.icon-apresentacao_poster {
+	background-image: url(icons/apresentacao_poster.png) !important;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+
+.icon-trabalho_apresentado {
+	background-image: url(icons/trabalho_apresentado.png) !important;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+
+.icon-aprovado {
+	background-image: url(icons/aprovado.png) !important;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+
+.icon-aprovado_restricoes {
+	background-image: url(icons/aprovado_restricoes.png) !important;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+
+.icon-credencial_ok {
+	background-image: url(icons/credencial_ok.png) !important;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+
+.icon-credencial_bad {
+	background-image: url(icons/credencial_bad.png) !important;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+
+.icon-em_revisao {
+	background-image: url(icons/em_revisao.png) !important;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+
+.icon-designado {
+	background-image: url(icons/designado.png) !important;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+
+.icon-reprovado {
+	background-image: url(icons/reprovado.png) !important;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+
+.icon-submetido {
+	background-image: url(icons/submetido.png) !important;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+
+.icon-gerencianet {
+	background-image: url(icons/gerencianet.png) !important;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+
+.bold-green {
+	font-weight: bold;
+	color: #39ba3b;
+}
+
+.bold-red {
+	font-weight: bold;
+	color: #D5B2B2;
+}
+
+.bold-blue {
+	font-weight: bold;
+	color: #5db2ef;
+}
+
+.gridVazio {
+	position: relative;
+}
+
+@font-face { 
+	font-family: BarCode; 
+	src: url(font/barcode.ttf); 
+}
+
+#gidvazio{
+	overflow: auto;
+	margin: auto;
+	position: absolute;
+	top: 0; left: 0; bottom: 0; right: 0;
+}
+
+#images-view .x-panel-body {
+    background: white;
+    font: 11px, Helvetica, sans-serif, bold;
+}
+
+#images-view .thumb {
+    background: #dddddd;
+    padding: 3px;
+    padding-bottom: 0;
+}
+
+.x-quirks #images-view .thumb {
+    padding-bottom: 3px;
+}
+
+#images-view .thumb img {
+    height: 80px;
+    width: 80px;
+}
+
+#images-view .thumb-wrap {
+    float: left;
+    margin: 4px;
+    margin-right: 0;
+    padding: 5px;
+}
+
+#images-view .thumb-wrap span {
+    display: block;
+    overflow: hidden;
+    text-align: center;
+    /* for ie to ensure that the text is centered */
+    width: 86px;
+}
+
+#images-view .x-item-over {
+    border: 1px solid #dddddd;
+    background: #efefef url(icons/over.gif) repeat-x left top;
+    padding: 4px;
+}
+
+#images-view .x-item-selected {
+    background: #eff5fb url(icons/selected.gif) no-repeat right bottom;
+    border: 1px solid #99bbe8;
+    padding: 4px;
+}
+
+#images-view .x-item-selected .thumb {
+    background: transparent;
+}
+
+#images-view .loading-indicator {
+    font-size: 11px;
+    background-image: url(icons/loading.gif);
+    background-repeat: no-repeat;
+    background-position: left;
+    padding-left: 20px;
+    margin: 10px;
+}
+
+.x-view-selector {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    border: 1px dotted;
+    opacity: 0.5;
+    -moz-opacity: 0.5;
+    filter: alpha(opacity=50);
+    zoom: 1;
+    background-color: #c3daf9;
+    border-color: #3399bb;
+}
+
+.ext-strict .ext-ie .x-tree .x-panel-bwrap {
+    position: relative;
+    overflow: hidden;
+}
+.icon-annex-white {
+	background-image: url(icons/annex-white.png) !important;
+	background-repeat: no-repeat;
+	background-position: center; 
+ }
