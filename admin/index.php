@@ -126,8 +126,14 @@ if ( $_SESSION['logado'] === true ) {
                                     <?php } ?>
 
                                      
-
-                                    <div class="box"><a href="meus_resumos.php"><img src="assets/images/menu/sr.png" class="img-responsive" alt="Submeter Resumos" /></a></div>
+                                    <div class="box"><a href="meus_resumos.php"><img src="assets/images/menu/trabalhos_submetidos.png" class="img-responsive" alt="Trabalhos Submetidos" /></a></div>
+                                    <div class="box"><a href="cadastrar_trabalho.php?categoria=1"><img src="assets/images/menu/seic.png" class="img-responsive" alt="Submeter resumo no SEIC" /></a></div>
+                                    <div class="box"><a href="cadastrar_trabalho_sext.php"><img src="assets/images/menu/sext.png" class="img-responsive" alt="Submeter resumo no SEXT" /></a></div>
+                                    <div class="box"><a href="cadastrar_trabalho.php?categoria=7"><img src="assets/images/menu/pibid.png" class="img-responsive" alt="Submeter Resumos" /></a></div>
+                                    <div class="box"><a href="cadastrar_trabalho.php?categoria=6"><img src="assets/images/menu/monitoria.png" class="img-responsive" alt="Submeter Resumos" /></a></div>
+                                    <div class="box"><a href="cadastrar_trabalho.php?categoria=3"><img src="assets/images/menu/pro_ativa.png" class="img-responsive" alt="Submeter Resumos" /></a></div>
+                                    <div class="box"><a href="cadastrar_trabalho.php?categoria=9"><img src="assets/images/menu/pos_graduacao.png" class="img-responsive" alt="Submeter Resumos" /></a></div>
+                                    <div class="box"><a href="cadastrar_trabalho.php?categoria=10"><img src="assets/images/menu/material.png" class="img-responsive" alt="Submeter Resumos" /></a></div>
 
                                     <?php if(TIPO_USUARIO  == ADMINISTRADOR || ( TIPO_USUARIO  == ALUNO_UFOP)|| ( TIPO_USUARIO  == TECNICO_UFOP) || ( TIPO_USUARIO  == PROFESSOR_UFOP)){ ?>
 
@@ -137,23 +143,13 @@ if ( $_SESSION['logado'] === true ) {
 
                                     <div class="box"><a href="correcoes.php"><img src="assets/images/menu/ct.png" class="img-responsive" alt="Corrigir Trabalhos" /></a></div>
 
-
-
-                                    
-
-                                </div>
-
-                                
-
-                                <div class="panel-body text-center">
-
-                                     <?php  if(TIPO_USUARIO  == ADMINISTRADOR){ ?>
+                                    <?php  if(TIPO_USUARIO  == ADMINISTRADOR){ ?>
 
                                     <div class="box"><a href="proposta_minicurso.php"><img src="assets/images/menu/er.png" class="img-responsive" alt="Enviar propostas de minicursos" /></a></div>
 
                                     
 
-									 <?php } if(BOOL_COORDENADOR || TIPO_USUARIO  == ADMINISTRADOR){ ?>
+                                     <?php } if(BOOL_COORDENADOR || TIPO_USUARIO  == ADMINISTRADOR){ ?>
 
                                     <div class="box"><a href="designar_avaliadores.php"><img src="assets/images/menu/da.png" class="img-responsive" alt="Designar Avaliadores" /></a></div>
 
@@ -179,10 +175,13 @@ if ( $_SESSION['logado'] === true ) {
 
                                     <div class="box"><a href="duvidas.php"><img src="assets/images/menu/duvidas.png" class="img-responsive" alt="Dúvidas" /></a></div>
 
+
+
+                                    
+
                                 </div>
 
-
-
+                                
                             </div>
 
 

@@ -12,8 +12,8 @@ include('../login/redirect.php');
 if ( $_SESSION['logado'] === true ) {
     include "header.php";
     include "menu.php";
-    $existe_monitoria_aluno = $db->existe('es_trabalho_seminario', array('aluno_cpf'=>$cpf, 'fgk_evento'=>EVENTO_ATUAL));
-    $existe_monitoria_orientador = $db->existe('es_trabalho_seminario', array('orientador_cpf'=>$cpf,'fgk_evento'=>EVENTO_ATUAL));
+    $existe_monitoria_aluno = $db->existe('es_trabalho_seminario', array('aluno_cpf'=>CPF_USUARIO, 'fgk_evento'=>EVENTO_ATUAL));
+    $existe_monitoria_orientador = $db->existe('es_trabalho_seminario', array('orientador_cpf'=>CPF_USUARIO,'fgk_evento'=>EVENTO_ATUAL));
     
     if(!$existe_monitoria_aluno && !$existe_monitoria_orientador){
         echo '<div class="page-inner">
@@ -40,7 +40,7 @@ if ( $_SESSION['logado'] === true ) {
         $existe_monitoria = $db->sql_query("SELECT *, es_trabalho_seminario.id as id_seminario FROM es_trabalho_seminario
                                             WHERE (es_trabalho_seminario.aluno_cpf = ? OR es_trabalho_seminario.orientador_cpf  =?) 
                                             AND es_trabalho_seminario.fgk_evento = ?",
-                                            array('es_trabalho_seminario.aluno_cpf' => $cpf, 'es_trabalho_seminario.orientador_cpf'=> $cpf, 'es_trabalho_seminario.fgk_evento'=>EVENTO_ATUAL));
+                                            array('es_trabalho_seminario.aluno_cpf' => CPF_USUARIO, 'es_trabalho_seminario.orientador_cpf'=> CPF_USUARIO, 'es_trabalho_seminario.fgk_evento'=>EVENTO_ATUAL));
         foreach ($existe_monitoria as $registro) {
             $id_seminario = $registro->id_seminario;
             $nome_aluno = $registro->aluno_nome;

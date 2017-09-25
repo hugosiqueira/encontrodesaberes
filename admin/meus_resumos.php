@@ -121,7 +121,7 @@ if ( $_SESSION['logado'] === true ) {
                                                            //      echo '<td></td>';
 															$id_trabalho = urlencode(base64_encode($resumo->id_trabalho));
 															if(ID_USUARIO == $resumo->fgk_inscrito_responsavel && ($resumo->fgk_status == TRABALHO_NAO_ENVIADO ))
-																echo '<td><a class="btn btn-danger"  href="cancelar_trabalho.php?id='.$id_trabalho.'" >Excluir Submissão</a></td>';
+																echo '<td><a class="btn btn-danger"  data-href="cancelar_trabalho.php?id='.$id_trabalho.'" data-toggle="modal" data-target="#confirm-delete">Excluir Submissão</a></td>';
 															else 
 																echo "<td>Você não possui permissão para excluir este trabalho.</td>";
                                                             if($resumo->apresentacao_obrigatoria == 1 && ($resumo->fgk_status == TRABALHO_NAO_ENVIADO || $resumo->fgk_status == TRABALHO_EM_EDICAO) && DATA_SUBMISSAO_FIM < date('Y-m-d'))
@@ -139,12 +139,32 @@ if ( $_SESSION['logado'] === true ) {
                                 </div>                            
                             </div>
                         </div>
+                        <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        Atenção
+                                    </div>
+                                    <div class="modal-body">
+                                        Você tem certeza que deseja excluir essa submissão? Essa ação será irreversível.
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                                        <a class="btn btn-danger btn-ok">Excluir</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 <?php
     include "footer.php";
 ?>
     <script type="text/javascript">
 
     $( document ).ready(function() {
+       $('#confirm-delete').on('show.bs.modal', function(e) {
+            $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+        });
+
         <?php 
         if(MOBILIDADE_ANO_ATUAL){
             ?>
@@ -188,11 +208,11 @@ if ( $_SESSION['logado'] === true ) {
 			{ "width": "2%" },
           ]
         });
-        $("div.toolbar").html('<a href="cadastrar_trabalho.php" class="btn btn-danger">Adicionar novo trabalho</a>');
+       /* $("div.toolbar").html('<a href="cadastrar_trabalho.php" class="btn btn-danger">Adicionar novo trabalho</a>');*/
         <?php } else { ?>
             $('#resumo').DataTable({"dom": '<"toolbar">frtip',
             "language": {
-                    "emptyTable":     "Nenhum trabalho cadastrado"
+                    "emptyTable":     "Você ainda não possui nenhum trabalho cadastrado"
             }});
         <?php } ?>  
          

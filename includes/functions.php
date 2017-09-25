@@ -706,4 +706,15 @@ function verificaEmailAutorTrabalho($db, $id_trabalho, $email_autor){
 	}
 }
 
+function buscarProjetos($db, $fgk_categoria, $fgk_evento){
+	$sql_projeto = "SELECT * FROM es_projeto WHERE fgk_categoria = ? AND fgk_evento = ?";
+	$dados = array("fgk_categoria"=>2, "fgk_evento"=>$fgk_evento);
+	$verifica_projeto = $db->sql_query($sql_projeto, $dados);
+	foreach ($verifica_projeto as $projeto) {
+		$titulo = $projeto->titulo;
+		$fgk_area_especifica = $projeto->fgk_area_especifica;
+	}
+	return array("titulo"=>$titulo, "fgk_area_especifica"=>$fgk_area_especifica);
+}
+
 

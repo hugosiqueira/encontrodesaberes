@@ -12,6 +12,8 @@ include('../login/redirect.php');
 if ( $_SESSION['logado'] === true ) {
     include "header.php";
     include "menu.php";
+
+    $categoria_trabalho = filter_input(INPUT_GET, "categoria");
 ?>   
 <style>
 select[readonly] {
@@ -92,7 +94,8 @@ select[readonly] {
 
                                     </div>
                                 </div>
-
+                                <input type="hidden" name="tipo_autor_responsavel" id="tipo_autor_responsavel" value='1'>
+                                <input type="hidden" name="apresentador_responsavel" id="apresentador_responsavel" value='1'>
                                 <div class="form-group">
                                     <label for="cpf">CPF do Responsável*</label>
                                     <input type="text" class="form-control" id="cpf" name="cpf" placeholder="" value="<?=CPF_USUARIO;?>" readonly>
@@ -125,46 +128,53 @@ select[readonly] {
 								</div>
 								<div class='form-group'>
                                     <label for='categoria'>Evento em que vai apresentar o trabalho*</label>
-                                    <select class='form-control' id='categoria' name='categoria' required>
+                                    <select class='form-control' id='categoria' name='categoria' readonly="readonly" tabindex = '-1' required>
 										<option></option>
-                                        <option value=1>SEIC - Seminário de Iniciação Científica</option>
-                                        <option value=2>SEXT - Seminário de Extensão</option>
-										<option value=3>Mostra Pró-Ativa</option>
-										<option value=6>Mostra Monitoria</option>
-										<option value=7>Mostra PIBID</option>
-										<option value=8>Mostra PET</option>
-										<option value=9>I Mostra da Pós Graduação</option>
+                                        <option value=1 <?php if ($categoria_trabalho == 1) echo "selected"; ?>>SEIC - Seminário de Iniciação Científica</option>
+                                        <option value=2 <?php if ($categoria_trabalho == 2) echo "selected"; ?>>SEXT - Seminário de Extensão</option>
+										<option value=3 <?php if ($categoria_trabalho == 3) echo "selected"; ?>>Mostra Pró-Ativa</option>
+										<option value=6 <?php if ($categoria_trabalho == 6) echo "selected"; ?>>Mostra Monitoria</option>
+										<option value=7 <?php if ($categoria_trabalho == 7) echo "selected"; ?>>Mostra PIBID</option>
+										<option value=9 <?php if ($categoria_trabalho == 9) echo "selected"; ?>>Mostra da Pós Graduação</option>
+										<option value=10 <?php if ($categoria_trabalho == 10) echo "selected"; ?>>Mostra de Material Didático-Pedagógico e Tecnológico</option>
 
                                     </select>
                                     <p class="help-block"></p>
                                 </div>
-                                <div class='form-group'>
-                                    <label for='tipo_autor_responsavel'>Tipo de Autor*</label>
-                                    <select class='form-control' id='tipo_autor_responsavel' name='tipo_autor_responsavel' required>
-                                        <option></option>
-                                        <?php 
-                                        $stmt = $db->sql_query('SELECT * FROM es_tipo_autor');
-                                        foreach ($stmt as $autor) {
-                                            echo '<option value="'.$autor->id_tipo_autor.'"  >'.$autor->descricao_tipo.' </option>';
-                                        }?>
-                                    </select>
-                                    <p class="help-block"></p>
-                                </div>
-                                <div class='form-group'>
-                                    <label for='apresentador_responsavel'>Apresentador*</label>
-                                    <select class='form-control' id='apresentador_responsavel' name='apresentador_responsavel' required>
-                                        <option value=0>Não</option>
-                                        <option value=1>Sim</option>
-                                    </select>
-                                    <p class="help-block"></p>
-                                </div>
-								
+                                <?php if ($categoria_trabalho == 1 || $categoria_trabalho == 9) : ?>
+	                                <div class="form-group">
+										<label for="programa_ic">Programa de Iniciação Científica</label>
+										<select class="form-control" id="programa_ic" name="programa_ic">
+											<option>Não possui Programa de Iniciação Científica</option>
+											<?php
+											$stmt = $db->sql_query("SELECT *
+											  FROM es_programa_ic 
+											  ORDER BY sigla ASC");
+											
+
+											foreach ($stmt as $programa) {
+												
+												echo '<option value="'.$programa->id.'">'.$programa->sigla.' - '.$programa->nome.'</option>';
+											}
+											?>
+										</select>
+										<p class="help-block"></p>
+									</div>
+								<?php endif; ?>
+                                <div class="form-group">
+									<label for="apoio_financeiro"> Apoio Financeiro</a></label>
+									<input type="text" class="form-control" id="apoio_financeiro" name = 'apoio_financeiro' placeholder="Só preencha se possuir apoio financeiro" />
+									<p class="help-block"></p>
+								</div>
 								 
                                 
                             </div>
                         </div>
                 </div>
+
                 <div class="col-md-6">
+                	<?php if ($categoria_trabalho == 1 || $categoria_trabalho == 9) : ?>
+                		
                     <div class="panel panel-white">
                         <div class="panel-body">
                             
@@ -221,21 +231,20 @@ select[readonly] {
 								<input type="text" class="form-control" id="protocolo_ceua" name="protocolo_ceua" placeholder="Número do Protocolo do Comissão de Ética no Uso de Animais" />
 								<p class="help-block"></p>
 							</div>
-							<div class="form-group">
-								<label for="apoio_financeiro"> Apoio Financeiro</a></label>
-								<input type="text" class="form-control" id="apoio_financeiro" name = 'apoio_financeiro' />
-								<p class="help-block"></p>
-							</div>
+							
                         </div>
                     </div>
+
+                <?php endif; ?>
                 </div>
                 <div class="col-md-12">
                     <div class="panel panel-white">
                         <div class="panel-body">
-                            <h3> Demais Autores </h3> 
+                            <h3> Demais Autores <small>(Caso haja mais de 20 autores favor enviar um e-mail para encontrodesaberes@ufop.br)</small></h3>
+
                             <div class="form-group col-md-12">
                                 <label for="qtdautor">Digite a quantidade de autores, que além de você colaboraram para este resumo (inclusive orientador, caso exista)</label>
-                                <input type="number" min=0 class="form-control" id="qtdautor" name="qtdautor" required>
+                                <input type="number" min=0 max=20 class="form-control" id="qtdautor" name="qtdautor" required>
                                 <p class="help-block"></p>
                             </div>
 

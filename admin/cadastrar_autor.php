@@ -46,7 +46,7 @@ if($existeEmailAutorCadastrado){
         'cpf' => $cpf_autor,
         'nome' => $nome_autor,
         'email' => $email_autor,
-        'bool_apresentador' => $apresentador_autor,
+        'bool_apresentador' => 0,
         'ordenacao' => $ordem_autor
         );
 

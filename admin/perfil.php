@@ -241,7 +241,7 @@ if ( $_SESSION['logado'] === true ) {
 			<div>
 
 		</form>  
-								<
+								
 				
 <?php
     include "footer.php";

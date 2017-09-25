@@ -12,7 +12,7 @@ include('../login/redirect.php');
 if ( $_SESSION['logado'] === true ) {
     include "header.php";
     include "menu.php";
-    $id_trabalho = $_GET['id'];
+    $id_trabalho = filter_input(INPUT_GET, "id", FILTER_SANITIZE_SPECIAL_CHARS);
     $trabalho = dadosTrabalho($db,  $id_trabalho);
     if( ($trabalho["id_status"] != TRABALHO_NAO_ENVIADO && $trabalho["id_status"] != TRABALHO_EM_EDICAO )){
         $disabled = "disabled";
@@ -114,7 +114,7 @@ if ( $_SESSION['logado'] === true ) {
 								<div class="modal-body">
 								
 									<div class="form-group">
-										<input type="hidden" id="id_trabalho_autor" name="id_trabalho_autor" value="<?=$_GET['id'];?>" class="form-control">
+										<input type="hidden" id="id_trabalho_autor" name="id_trabalho_autor" value="<?=$id_trabalho;?>" class="form-control">
 										<input type="text" id="cpf_autor" name="cpf_autor" class="form-control" placeholder="CPF" required>
 									</div>
 									<div class="form-group">
@@ -138,7 +138,7 @@ if ( $_SESSION['logado'] === true ) {
 										<select class='form-control' id='tipo_autor' name='tipo_autor' required>
 											<option>Selecione a função do autor</option>
 											<?php 
-											$stmt = $db->sql_query('SELECT * FROM es_tipo_autor');
+											$stmt = $db->sql_query('SELECT * FROM es_tipo_autor WHERE descricao_tipo <> "Autor"');
 											foreach ($stmt as $autor) {
 												echo '<option value="'.$autor->id_tipo_autor.'"  >'.$autor->descricao_tipo.' </option>';
 											}
@@ -148,13 +148,7 @@ if ( $_SESSION['logado'] === true ) {
 									<div class="form-group">
 										 <input type="number" id="ordem_autor" name="ordem_autor" class="form-control" placeholder="Qual a ordem de autoria do autor?" min = 1 required>
 									</div>
-									<div class="form-group">
-										<select class='form-control' id='apresentador_autor' name='apresentador_autor' required>
-											<option>Esse autor é o apresentador?</option>
-											<option value=0>Não</option>
-											<option value=1>Sim</option>
-										</select>
-									</div>
+								
 
 								</div>
 								<div class="modal-footer">
@@ -298,50 +292,51 @@ if ( $_SESSION['logado'] === true ) {
 														?>
 												</select>
 											</div>
+											<?php if($trabalho["id_categoria"] == 1) { ?>
+												<div class="form-group">
+													<label for="orgao_fomento">Órgão de fomento</label>
+													<select class="form-control" id="orgao_fomento" name="orgao_fomento" required <?=$edicao;?>>
+														<option>
+														</option>
+														<?php
+														$stmt = $db->sql_query("SELECT *
+														  FROM es_orgao_fomento
+														  ORDER BY sigla");
+														foreach ($stmt as $orgao) {
+															 if($trabalho["id_orgao_fomento"] == $orgao->id)
+																		$select_orgao = "selected";
+																	else 
+																		$select_orgao = "";
+															echo '<option value="'.$orgao->id.'" '.$select_orgao.' >'.$orgao->sigla.' - '.$orgao->nome.'</option>';
+														}
 
+														?>
+													</select>
+													<p class="help-block"></p>
+												</div>
+												<?php } ?>
+											</div>
+										<?php if($trabalho["id_categoria"] == 1) { ?>
+										<div class="col-md-6">
 											<div class="form-group">
-												<label for="orgao_fomento">Órgão de fomento</label>
-												<select class="form-control" id="orgao_fomento" name="orgao_fomento" required <?=$edicao;?>>
-													<option>
-													</option>
-													<?php
-													$stmt = $db->sql_query("SELECT *
-													  FROM es_orgao_fomento
-													  ORDER BY sigla");
-													foreach ($stmt as $orgao) {
-														 if($trabalho["id_orgao_fomento"] == $orgao->id)
-																	$select_orgao = "selected";
-																else 
-																	$select_orgao = "";
-														echo '<option value="'.$orgao->id.'" '.$select_orgao.' >'.$orgao->sigla.' - '.$orgao->nome.'</option>';
-													}
-
-													?>
-												</select>
+													<label for="aluno"> Número do Protocolo <a href="http://www.comitedeetica.ufop.br/" target="_blank">CEP</a></label>
+													<input type="text" class="form-control" id="protocolo_cep" name = "protocolo_cep" value="<?=$trabalho["protocolo_cep"];?>" placeholder="Número do Protocolo do Comitê de Ética em Pesquisa" />
+													<p class="help-block"></p>
+											</div>
+											<div class="form-group">
+												<label for="aluno"> Número do Protocolo <a href="http://www.ceua.ufop.br/" target="_blank">CEUA</a></label>
+												<input type="text" class="form-control" id="protocolo_ceua" name="protocolo_ceua" value="<?=$trabalho["protocolo_ceua"];?>" placeholder="Número do Protocolo do Comissão de Ética no Uso de Animais" />
 												<p class="help-block"></p>
 											</div>
-										</div>
-										<div class="col-md-6">
-										
-										
-										<div class="form-group">
-												<label for="aluno"> Número do Protocolo <a href="http://www.comitedeetica.ufop.br/" target="_blank">CEP</a></label>
-												<input type="text" class="form-control" id="protocolo_cep" name = "protocolo_cep" value="<?=$trabalho["protocolo_cep"];?>" placeholder="Número do Protocolo do Comitê de Ética em Pesquisa" />
+											<div class="form-group">
+												<label for="apoio_financeiro"> Apoio Financeiro</a></label>
+												<input type="text" class="form-control" id="apoio_financeiro" name = 'apoio_financeiro' value="<?=$trabalho["apoio_financeiro"];?>"/>
 												<p class="help-block"></p>
-										</div>
-										<div class="form-group">
-											<label for="aluno"> Número do Protocolo <a href="http://www.ceua.ufop.br/" target="_blank">CEUA</a></label>
-											<input type="text" class="form-control" id="protocolo_ceua" name="protocolo_ceua" value="<?=$trabalho["protocolo_ceua"];?>" placeholder="Número do Protocolo do Comissão de Ética no Uso de Animais" />
-											<p class="help-block"></p>
-										</div>
-										<div class="form-group">
-											<label for="apoio_financeiro"> Apoio Financeiro</a></label>
-											<input type="text" class="form-control" id="apoio_financeiro" name = 'apoio_financeiro' value="<?=$trabalho["apoio_financeiro"];?>"/>
-											<p class="help-block"></p>
-										</div>
-                                </div>
-                            </div>
-                        </div>
+											</div>
+		                                </div>
+		                                <?php } ?>
+		                            </div>
+		                        </div>
                         
                         <div class="col-md-12">
                             <div class="panel panel-white">

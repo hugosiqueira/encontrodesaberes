@@ -1,6 +1,6 @@
 <?php
 include ("../../config.php");
-include ("../includes/functions.php");
+//include ("../includes/functions.php");
 
 foreach ($_POST as $campo => $valor) { $$campo = trim(strip_tags($valor));}
 

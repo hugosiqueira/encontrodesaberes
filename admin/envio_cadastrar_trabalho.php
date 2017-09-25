@@ -39,6 +39,56 @@ try {
 		exit();
 	}
 
+  switch ($categoria) {
+    //Mostra Pró-Ativa
+    case 3:
+      $area = 6;
+      $area_especifica = 96;
+      $orgao_fomento = 368;
+      $protocolo_cep = NULL;
+      $protocolo_ceua = NULL; 
+      break;
+
+    // Mostra Monitoria
+    case 6:
+      $area = 9;
+      $area_especifica = 107;
+      $orgao_fomento = 368;
+      $protocolo_cep = NULL;
+      $protocolo_ceua = NULL; 
+      break;
+
+    //Mostra PIBID
+    case 7:
+      $area = 10;
+      $area_especifica = 105;
+      $orgao_fomento = 368;
+      $protocolo_cep = NULL;
+      $protocolo_ceua = NULL; 
+      break;
+
+    //Mostra PET
+    case 8:
+      $area = 11;
+      $area_especifica = 106;
+      $orgao_fomento = 368;
+      $protocolo_cep = NULL;
+      $protocolo_ceua = NULL; 
+      break;
+
+    //Mostra Material Didático
+    case 10:
+      $area = 13;
+      $area_especifica = 117;
+      $orgao_fomento = 368;
+      $protocolo_cep = NULL;
+      $protocolo_ceua = NULL; 
+      break;
+  }
+
+  $apoio_financeiro = (isset($apoio_financeiro)) ? $apoio_financeiro : NULL ;
+  $programa_ic = (isset($programa_ic)) ? $programa_ic : NULL ;
+
     $dados = array(
     'fgk_area' => $area,
     'fgk_area_especifica' => $area_especifica,
@@ -58,7 +108,8 @@ try {
 	'apoio_financeiro' => $apoio_financeiro, 
 	'protocolo_cep' => $protocolo_cep,
 	'protocolo_ceua' => $protocolo_ceua,
-	'autorizacao_repositorio' => $autorizacao_repositorio
+	'autorizacao_repositorio' => $autorizacao_repositorio,
+  'programa_ic' => $programa_ic
 	
     );
     

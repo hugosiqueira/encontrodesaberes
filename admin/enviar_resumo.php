@@ -16,7 +16,7 @@ if ( $_SESSION['logado'] === true ) {
       if($fgk_status == TRABALHO_SUBMETIDO){
         $datahora_submissao = date('Y-m-d H:i:s');
       } else {
-        $datahora_submissao = "";
+        $datahora_submissao = NULL;
       }
 	  
 	  $verifica_qtd_trabalho_categoria = verificaTrabInscrito($db, CPF_USUARIO, $categoria, EVENTO_ATUAL);
@@ -30,6 +30,64 @@ if ( $_SESSION['logado'] === true ) {
 			echo "Prezado(a) ".NOME_USUARIO.", você já é autor de um trabalho com o mesmo nome e não é aceito trabalhos repetidos.";
 			exit();
 		}
+
+    switch ($categoria) {
+    //Mostra Pró-Ativa
+    case 3:
+      $area = 6;
+      $area_especifica = 96;
+      $orgao_fomento = 368;
+      $protocolo_cep = NULL;
+      $protocolo_ceua = NULL; 
+      break;
+
+    // Mostra Monitoria
+    case 6:
+      $area = 9;
+      $area_especifica = 107;
+      $orgao_fomento = 368;
+      $protocolo_cep = NULL;
+      $protocolo_ceua = NULL; 
+      break;
+
+    //Mostra PIBID
+    case 7:
+      $area = 10;
+      $area_especifica = 105;
+      $orgao_fomento = 368;
+      $protocolo_cep = NULL;
+      $protocolo_ceua = NULL; 
+      break;
+
+    //Mostra PET
+    case 8:
+      $area = 11;
+      $area_especifica = 106;
+      $orgao_fomento = 368;
+      $protocolo_cep = NULL;
+      $protocolo_ceua = NULL; 
+      break;
+
+    //Mostra Pós-Graduação
+    case 9:
+      $area = 12;
+      $area_especifica = 116;
+      $orgao_fomento = 368;
+      $protocolo_cep = NULL;
+      $protocolo_ceua = NULL; 
+      break;
+
+    //Mostra Material Didático
+    case 10:
+      $area = 13;
+      $area_especifica = 117;
+      $orgao_fomento = 368;
+      $protocolo_cep = NULL;
+      $protocolo_ceua = NULL; 
+      break;
+  }
+
+  $apoio_financeiro = (isset($apoio_financeiro)) ? $apoio_financeiro : NULL ;
 
       $dados = array(
       'fgk_status' => $fgk_status,

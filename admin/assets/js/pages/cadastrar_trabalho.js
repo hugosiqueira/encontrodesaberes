@@ -162,7 +162,7 @@ $(document).ready(function() {
 				var protocolo_cep =  $('#protocolo_cep').val();
 				var resumo = $('#resumo').val();
 				var autorizacao_repositorio = $("#autorizacao_repositorio").attr("checked") ? 1 : 0;
-
+                var programa_ic = $("#programa_ic").val();
 				/*var resumo_enviado = resumo_enviado.replace(/&/g, "&amp;")
                 var resumo_enviado = resumo_enviado.replace(/</g, "&lt;")
                 var resumo_enviado = resumo_enviado.replace(/>/g, "&gt;")
@@ -188,7 +188,7 @@ $(document).ready(function() {
 				
                 var id_inscrito = $('#id_inscrito').val();
 				
-                var dados = "autorizacao_repositorio="+autorizacao_repositorio+"&categoria="+categoria+"&protocolo_cep="+protocolo_cep+"&protocolo_ceua="+protocolo_ceua+"&apoio_financeiro="+apoio_financeiro+"&cpf="+cpf+"&nome="+nome+"&email="+email+"&instituicao="+instituicao+"&tipo_autor_responsavel="+tipo_autor_responsavel+"&apresentador_responsavel="+apresentador_responsavel+"&qtdautor="+qtdautor+"&area="+area+"&area_especifica="+area_especifica+"&palavras_chave="+palavras_chave+"&resumo_enviado="+resumo_enviado+"&orgao_fomento="+orgao_fomento+"&titulo="+titulo+"&id_inscrito="+id_inscrito+"&fgk_status=1";
+                var dados = "programa_ic="+programa_ic+"&autorizacao_repositorio="+autorizacao_repositorio+"&categoria="+categoria+"&protocolo_cep="+protocolo_cep+"&protocolo_ceua="+protocolo_ceua+"&apoio_financeiro="+apoio_financeiro+"&cpf="+cpf+"&nome="+nome+"&email="+email+"&instituicao="+instituicao+"&tipo_autor_responsavel="+tipo_autor_responsavel+"&apresentador_responsavel="+apresentador_responsavel+"&qtdautor="+qtdautor+"&area="+area+"&area_especifica="+area_especifica+"&palavras_chave="+palavras_chave+"&resumo_enviado="+resumo_enviado+"&orgao_fomento="+orgao_fomento+"&titulo="+titulo+"&id_inscrito="+id_inscrito+"&fgk_status=1";
 				
 				//var dados = 'categoria:'+categoria+', protocolo_cep:'+protocolo_cep+', protocolo_ceua:'+protocolo_ceua+', apoio_financeiro:'+apoio_financeiro+', tipo_autor_responsavel:'+tipo_autor_responsavel+', apresentador_responsavel:'+apresentador_responsavel+', qtdautor:'+ qtdautor+', area:'+area+', area_especifica:' +area_especifica+', palavras_chave:'+ palavras_chave+', resumo_enviado:'+ resumo_enviado+', orgao_fomento:'+ orgao_fomento+', titulo:'+titulo+', id_inscrito:'+ id_inscrito+', fgk_status: 1';
 				if(qtdautor > 0){
@@ -364,15 +364,16 @@ $("#enviar2").click(function() {
                         var orgao_fomento = $("#orgao_fomento").val();
                         var titulo = $("#titulo").val();
                         var palavras_chave = $("#palavras_chave").val();
-
+                        var categoria = $("#categoria").val();
 						var apoio_financeiro = $('#apoio_financeiro').val();
 						var protocolo_ceua = $('#protocolo_ceua').val();
 						var protocolo_cep =  $('#protocolo_cep').val();
 						var resumo_enviado = $('#resumo').val();
 						var autorizacao_repositorio = $("#autorizacao_repositorio").attr("checked") ? 1 : 0;
                         var id_inscrito = $('#id_inscrito').val();
+                        var programa_ic =$("#programa_ic").val();
 
-                        var dados = "autorizacao_repositorio="+autorizacao_repositorio+"&categoria="+categoria+"&protocolo_cep="+protocolo_cep+"&protocolo_ceua="+protocolo_ceua+"&apoio_financeiro="+apoio_financeiro+"&cpf="+cpf+"&nome="+nome+"&email="+email+"&instituicao="+instituicao+"&tipo_autor_responsavel="+tipo_autor_responsavel+"&apresentador_responsavel="+apresentador_responsavel+"&qtdautor="+qtdautor+"&area="+area+"&area_especifica="+area_especifica+"&palavras_chave="+palavras_chave+"&resumo_enviado="+resumo_enviado+"&orgao_fomento="+orgao_fomento+"&titulo="+titulo+"&id_inscrito="+id_inscrito+"&fgk_status=1";
+                        var dados = "programa_ic="+programa_ic+"&autorizacao_repositorio="+autorizacao_repositorio+"&categoria="+categoria+"&protocolo_cep="+protocolo_cep+"&protocolo_ceua="+protocolo_ceua+"&apoio_financeiro="+apoio_financeiro+"&cpf="+cpf+"&nome="+nome+"&email="+email+"&instituicao="+instituicao+"&tipo_autor_responsavel="+tipo_autor_responsavel+"&apresentador_responsavel="+apresentador_responsavel+"&qtdautor="+qtdautor+"&area="+area+"&area_especifica="+area_especifica+"&palavras_chave="+palavras_chave+"&resumo_enviado="+resumo_enviado+"&orgao_fomento="+orgao_fomento+"&titulo="+titulo+"&id_inscrito="+id_inscrito+"&fgk_status=1";
 				
 						//var dados = 'categoria:'+categoria+', protocolo_cep:'+protocolo_cep+', protocolo_ceua:'+protocolo_ceua+', apoio_financeiro:'+apoio_financeiro+', tipo_autor_responsavel:'+tipo_autor_responsavel+', apresentador_responsavel:'+apresentador_responsavel+', qtdautor:'+ qtdautor+', area:'+area+', area_especifica:' +area_especifica+', palavras_chave:'+ palavras_chave+', resumo_enviado:'+ resumo_enviado+', orgao_fomento:'+ orgao_fomento+', titulo:'+titulo+', id_inscrito:'+ id_inscrito+', fgk_status: 1';
 						if(qtdautor > 0){
