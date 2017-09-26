@@ -145,7 +145,7 @@ select[readonly] {
 	                                <div class="form-group">
 										<label for="programa_ic">Programa de Iniciação Científica</label>
 										<select class="form-control" id="programa_ic" name="programa_ic">
-											<option>Não possui Programa de Iniciação Científica</option>
+											<option value =0>Não possui Programa de Iniciação Científica</option>
 											<?php
 											$stmt = $db->sql_query("SELECT *
 											  FROM es_programa_ic 

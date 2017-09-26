@@ -247,9 +247,11 @@ function envia_email( $sendgrid_apikey, $destinatario, $assunto, $mensagem, $cat
            
     $email = new SendGrid\Email();
            
-    $email->addTo($destinatario)->setCategory($categoria)->setFrom($remetente)->setSubject($assunto)->setHtml($corpo_email);
+    $email->addTo($destinatario)->setCategory($categoria)->setFrom($remetente)->setSubject($assunto)->setHtml($corpo_email)->setFromname("Encontro de Saberes");
            
     $sendgrid->send($email);
+
+    return true;
 
 
 }

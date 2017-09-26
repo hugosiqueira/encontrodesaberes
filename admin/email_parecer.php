@@ -49,13 +49,12 @@ include('../login/redirect.php');
                                   <p>Área de Conhecimento: ' . $descricao_area_especifica. ' </p>
                                            <p>Foi ACEITO COM RESTRIÇÕES para apresentação no Encontro de Saberes . Isto significa que o trabalho será aceito se atendidas as modificações indicadas na(s) avaliação(ões) descrita(s) a seguir:</p>
                                   '. $parecer .'
-                                  <p>Informamos que a edição final do resumo deve ser concluída no site www.encontrodesaberes.ufop.br entre os dias 28 de outubro a 1 de novembro de 2016, usando-se o login (CPF) e senha do usuário que submeteu o trabalho.</p>
+                                  <p>Informamos que a edição final do resumo deve ser concluída no site www.encontrodesaberes.ufop.br até o dia'.converteDataPort(DATA_ADEQUACAO_FIM).', usando-se o login (CPF) e senha do usuário que submeteu o trabalho.</p>
                                   <p>Atenção, é possível inserir os agradecimentos aos apoiadores financeiros no final do resumo, integrando-o ao texto. Caso ainda não tenha feito, sugerimos que o faça para que conste nos Anais do Encontro de Saberes.</p>
                                   <p>Atenciosamente</p>
                                   <p>--</p>
                                   <p>Coordenação do Encontro de Saberes<br>
-                                    Centro de Artes e Convenções da UFOP<br>
-                                    Ouro Preto, MG
+                                    
                                     </p>';
 
         } else if($fgk_status == 8){

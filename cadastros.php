@@ -295,38 +295,27 @@ $ip = $_SERVER["REMOTE_ADDR"];
                                 <div class="tab-pane active fade in" id="tab4">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <p class="text-justify">A inscri&ccedil;&atilde;o no Encontro de Saberes dar&aacute; ao inscrito o direito de:</p>
+                                            <p class="text-justify">A participação no Encontro de Saberes é aberta para toda comunidade acadêmica. Entretanto, para submissão de trabalhos é necessário realizar a inscrição no evento. A submissão do resumo/trabalho deve ser realizada pelo estudante que irá apresentá-lo como autor. </p>
+                                            <p>Cada inscrição no Encontro de Saberes dará ao inscrito o direito de:</p>
 
                                             <ol>
-                                                <li>Submeter resumos ao SEIC, desde que referentes a projetos de Inicia&ccedil;&atilde;o Cient&iacute;fica vinculados &agrave; Pr&oacute;-reitora de Pesquisa e P&oacute;s-gradua&ccedil;&atilde;o (da UFOP ou de outras institui&ccedil;&otilde;es). Cada projeto poder&aacute; submeter 01 resumo;</li>
-                                                <li>Submeter um trabalho referente a projetos de Extens&atilde;o (UFOP) para o SEXT;</li>
-                                                <li>Submeter um trabalho referente a projeto do Programa Pr&oacute;-ativa (UFOP) para a Mostra Pr&oacute;-Ativa.</li>
-                                                <li>Submeter um trabalho referente a experi&ecirc;ncia no Programa Institucional de Bolsa de Inicia&ccedil;&atilde;o &agrave; Doc&ecirc;ncia (Pibid - UFOP) para a Mostra PIBID.</li>
-                                                <li>Submeter um trabalho referente a experi&ecirc;ncia no Programa de Educa&ccedil;&atilde;o Tutorial (PET - UFOP) para a Mostra PET.</li>
-                                                <li>Submeter um trabalho referente a experi&ecirc;ncia no Programa de Monitoria (UFOP) para a Mostra Monitoria.</li>
-                                                <li>Submeter um trabalho referente a experi&ecirc;ncia em mobilidade acad&ecirc;mica/ci&ecirc;ncia sem fronteiras (UFOP) para o SEINTER.</li>
+                                                <li>1.  Submeter um resumo no XXV SEIC.</li>
+                                                <li>2.  Submeter um resumo para a I Mostra da Pós-Graduação.</li>
+                                                <li>3.  Submeter um trabalho referente a projetos de Extensão (UFOP) para o SEXT;</li>
+                                                <li>4.  Submeter um trabalho referente a projeto do Programa Pró-ativa (UFOP) para a Mostra Pró-Ativa.</li>
+                                                <li>5.  Submeter um trabalho referente à experiência no Programa Institucional de Bolsa de Iniciação à Docência (Pibid - UFOP) para a Mostra PIBID.</li>
+                                                <li>6.  Submeter um trabalho referente à experiência no Programa de Monitoria (UFOP) para a Mostra Monitoria.</li>
+                                                <li>7.  Submeter um trabalho referente à experiência em mobilidade acadêmica/Ciências sem Fronteiras (UFOP) para o III SEINTER.</li>
                                             </ol>
 
-                                            <p class="text-justify">*Alunos de outras institui&ccedil;&otilde;es s&oacute; poder&atilde;o submeter trabalhos relacionados a seus projetos de Inicia&ccedil;&atilde;o Cient&iacute;fica no SEIC. Aten&ccedil;&atilde;o: apenas se for trabalho de Inicia&ccedil;&atilde;o Cient&iacute;fica da sua institui&ccedil;&atilde;o.</p>
+                                            <p class="text-justify">*ATENÇÃO: Alunos de outras instituições serão bem vindos e só poderão submeter ao SEIC e SEXT trabalhos cadastrados como Iniciação Científica ou Extensão em suas respectivas instituições. As demais mostras do Encontro dos Saberes receberão submissões somente de alunos da UFOP. </p>
 
-                                            <p class="text-justify">O per&iacute;odo de inscri&ccedil;&otilde;es no Encontro de Saberes 2016 ser&aacute; de&nbsp;12 de setembro a 09 de novembro de 2016.&nbsp;</p>
-
-                                            <p class="text-justify">Possivelmente ser&atilde;o abertas vagas de participa&ccedil;&atilde;o no evento nos dias de realiza&ccedil;&atilde;o do Encontro de Saberes&nbsp;(22 e 23 de novembro de 2016),&nbsp;conforme disponibilidade.</p>
-
-                                            <p class="text-justify">O per&iacute;odo de submiss&atilde;o de trabalhos no sistema ser&aacute; de&nbsp;12 de setembro a 05 de outubro de 2016.</p>
-
-                                        
-
-
+                                            <p class="text-justify">O período de submissão de trabalhos no sítio do evento será de 26 de setembro a 11 de outubro de 2017</p>                                      
 
                                         </div>
                                         <div class="col-md-6">
                                             <p class="text-justify"><strong>TAXA DE INSCRI&Ccedil;&Atilde;O</strong></p>
-                                            <p class="text-justify">O pagamento da inscri&ccedil;&atilde;o dever&aacute; ser realizado via boleto. Basta acessar a sua &aacute;rea restrita e gerar o boleto para visualiza&ccedil;&atilde;o ou impress&atilde;o e pagamento.</p>
-
-                                            <p class="text-justify">Lembrando que para confirmar a sua inscri&ccedil;&atilde;o e participa&ccedil;&atilde;o no evento &eacute; necess&aacute;rio efetuar o pagamento.</p>
-
-                                            <p class="text-justify">Caso a inscri&ccedil;&atilde;o n&atilde;o seja confirmada no prazo, o trabalho submetido, se for o caso, n&atilde;o poder&aacute; ser apresentado.</p>
+                                            <p class="text-justify">O pagamento da inscrição deverá ser realizado via boleto até o dia 16 de novembro. Basta acessar a sua área restrita e gerar o boleto para pagamento. Para confirmar a sua inscrição e a apresentação de trabalho no evento é necessário efetuar o pagamento.</p>
 
                                             <table class="table table-bordered">
                                                 <tbody>
@@ -335,64 +324,56 @@ $ip = $_SERVER["REMOTE_ADDR"];
                                                             Valor das Inscri&ccedil;&otilde;es</td>
                                                         </tr>
                                                         <tr>
-                                                            <td>
-                                                                Estudante da UFOP</td>
-                                                                <td>
-                                                                    R$25,00</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>
-                                                                        Professores ou t&eacute;cnicos da UFOP</td>
-                                                                        <td>
-                                                                            R$35,00</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td>
-                                                                                Estudante de outras institui&ccedil;&otilde;es</td>
-                                                                                <td>
-                                                                                    R$50,00</td>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td>
-                                                                                        Professores ou profissionais de outras institui&ccedil;&otilde;es</td>
-                                                                                        <td>
-                                                                                            R$70,00</td>
-                                                                                        </tr>
-                                                                                    </tbody>
-                                                                                </table>
-                                                                                <p class="text-justify">* N&atilde;o haver&aacute; restitui&ccedil;&atilde;o da taxa de inscri&ccedil;&atilde;o no evento, em nenhuma hip&oacute;tese.</p>
-                                                                                <p class="text-justify">*Os professores que forem designados para revisar resumos online e/ou avaliar trabalhos no evento n&atilde;o ser&atilde;o obrigados a pagar a inscri&ccedil;&atilde;o, apenas realizar o seu cadastro no site.</p>
-                                                                                <p class="text-justify">Qualquer dúvida entre em contato com a Topazio Imperial Organização de Eventos - Telefones: (31) 3551-4006 - Celular: (31) 99917-5683 - E-mail: encontrodesaberes@ufop.br</p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <ul class="pager wizard">
-                                                                        <li class="previous first" class="btn btn-danger" style="display:none;"><a href="#">Primeira</a></li>
-                                                                        <li class="previous" id="voltar"><a href="#" class="btn btn-danger">Voltar</a></li>
-                                                                        <li class="next last" class="btn btn-danger" style="display:none;"><a href="#">&Uacute;ltima</a></li>
-                                                                        <li class="next" id="avancar"><a href="#" class="btn btn-danger">Avan&ccedil;ar</a></li>
-                                                                    </ul>
-                                                                </div>
-                                                            </form>
-                                                        </div>
-                                                        <?php //}  ?>
-
-
-                                                    </div>
-                                                </div>
-                                            </div>
+                                                            <td>Graduandos da UFOP</td>
+                                                            <td>R$30,00</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Pós-Graduandos da UFOP</td>
+                                                            <td>R$45,00</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Estudante de outras institui&ccedil;&otilde;es</td>
+                                                            <td>R$60,00</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Professores ou profissionais de outras institui&ccedil;&otilde;es</td>
+                                                            <td>R$75,00</td>
+                                                        </tr>
+                                            </table>
+                                            <p class="text-justify">* *Não haverá restituição da taxa de inscrição no evento. Só serão emitidos certificados de apresentação de trabalhos devidamente inscritos vinculados à apresentação oral, pôster, bancada ou apresentação artística na data e horário estabelecidos na programação com pagamento da taxa de inscrição efetuados.</p>
+                                            <p class="text-justify">*Os professores e pós-graduandos que forem designados para revisar resumos online e/ou avaliar trabalhos durante o evento receberão certificados de avaliadores emitidos no próprio sistema do Encontro de Saberes. Os avaliadores não precisarão pagar a inscrição, mas deverão se cadastrar no site para avaliarem.</p>
+                                            <p class="text-justify">A participação de discentes e pessoas da comunidade é gratuita e livre e não serão emitidos certificados de participação do evento. A carga horária de participação devidamente comprovada por meio eletrônico poderá ser contabilizada como ATV para os discentes da UFOP.</p>
+                                            <p class="text-justify">Em caso de dúvida entrar em contato com a Topázio Imperial Organização de Eventos - Telefones: (31) 3551-4006 - Celular: (31) 99917-5683 - E-mail: encontrodesaberes@ufop.br</p>
                                         </div>
                                     </div>
+                                </div>
 
-                                    <?php 
+                                <ul class="pager wizard">
+                                    <li class="previous first" class="btn btn-danger" style="display:none;"><a href="#">Primeira</a></li>
+                                    <li class="previous" id="voltar"><a href="#" class="btn btn-danger">Voltar</a></li>
+                                    <li class="next last" class="btn btn-danger" style="display:none;"><a href="#">&Uacute;ltima</a></li>
+                                    <li class="next" id="avancar"><a href="#" class="btn btn-danger">Avan&ccedil;ar</a></li>
+                                </ul>
+                            </div>
+                        </form>
+                    </div>
+                    <?php //}  ?>
 
-                                    include "bibliotecas.php"; 
 
-                                    ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-                                    <script src="js/twitter-bootstrap-wizard/jquery.bootstrap.wizard.min.js"></script>
-                                    <script type="text/javascript" src="js/cadastro.js"></script>
+<?php 
 
-                                    <?php include "footer.php"; ?>
+include "bibliotecas.php"; 
+
+?>
+
+<script src="js/twitter-bootstrap-wizard/jquery.bootstrap.wizard.min.js"></script>
+<script type="text/javascript" src="js/cadastro.js"></script>
+
+<?php include "footer.php"; ?>
 

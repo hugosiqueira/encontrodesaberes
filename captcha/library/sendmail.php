@@ -54,7 +54,7 @@
   }*/
   //attempt to send email
   $messageBody = 'teste novamente';
-  require '/home/seic2015/encontrodesaberes.com.br/captcha/library/vender/php_mailer/PHPMailerAutoload.php';
+  require '/home/seic2015/encontrodesaberes.ufop.br/captcha/library/vender/php_mailer/PHPMailerAutoload.php';
   $mail = new PHPMailer;
   $mail->CharSet = 'UTF-8';
   $mail->isSMTP();
