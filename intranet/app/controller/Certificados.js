@@ -179,13 +179,13 @@ Ext.define('Seic.controller.Certificados', {
 				fn: function(button){
 					if(button=="yes"){
 						var row = grid.getSelectionModel().getSelection()[0];
-						url = 'http://www.encontrodesaberes.com.br/gerar_certificado.php?c='+row.data.chave_autenticidade+'&f=1';
+						url = 'http://www.encontrodesaberes.ufop.br/gerar_certificado.php?c='+row.data.chave_autenticidade+'&f=1';
 						window.open(url,'_blank');
 
 					}
 					else if(button=="no"){
 						var row = grid.getSelectionModel().getSelection()[0];
-						url = 'http://www.encontrodesaberes.com.br/gerar_certificado.php?c='+row.data.chave_autenticidade+'&f=2';;
+						url = 'http://www.encontrodesaberes.ufop.br/gerar_certificado.php?c='+row.data.chave_autenticidade+'&f=2';;
 						window.open(url,'_blank');
 					}
 					else {	}

@@ -163,7 +163,8 @@ try {
 
       }
 
-      echo json_encode($customers);
+	
+      echo @json_encode($customers);
     
     
 

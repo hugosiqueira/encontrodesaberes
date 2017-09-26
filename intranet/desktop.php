@@ -1,5 +1,5 @@
 <?php
-require_once("$_SERVER[DOCUMENT_ROOT]/../config.php");
+require_once("C:/xampp/htdocs/config.php");
 require_once 'includes/functions.php';
 sec_session_start();
 
