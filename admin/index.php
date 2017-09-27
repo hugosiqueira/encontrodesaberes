@@ -39,7 +39,7 @@ if ( $_SESSION['logado'] === true ) {
 
 </style>
 
-        <div class="modal fade" id="pagamento"  role="dialog" data-backdrop="static" aria-hidden="false">
+        <div class="modal fade" id="conta_nao_ativada"  role="dialog" data-backdrop="static" aria-hidden="false">
 
             <div class="modal-dialog">
 
@@ -47,7 +47,7 @@ if ( $_SESSION['logado'] === true ) {
 
                     <div class="modal-header">
 
-                        <h4 class="modal-title" id="myModalLabel">Conta não ativada - <?=CONTA_ATIVADA;?></h4>
+                        <h4 class="modal-title" id="myModalLabel">Conta não ativada</h4>
 
                     </div>
 
@@ -129,27 +129,21 @@ if ( $_SESSION['logado'] === true ) {
                                     <div class="box"><a href="meus_resumos.php"><img src="assets/images/menu/trabalhos_submetidos.png" class="img-responsive" alt="Trabalhos Submetidos" /></a></div>
                                     <div class="box"><a href="cadastrar_trabalho.php?categoria=1"><img src="assets/images/menu/seic.png" class="img-responsive" alt="Submeter resumo no SEIC" /></a></div>
                                     <div class="box"><a href="cadastrar_trabalho_sext.php"><img src="assets/images/menu/sext.png" class="img-responsive" alt="Submeter resumo no SEXT" /></a></div>
-                                    <div class="box"><a href="cadastrar_trabalho.php?categoria=7"><img src="assets/images/menu/pibid.png" class="img-responsive" alt="Submeter Resumos" /></a></div>
-                                    <div class="box"><a href="cadastrar_trabalho.php?categoria=6"><img src="assets/images/menu/monitoria.png" class="img-responsive" alt="Submeter Resumos" /></a></div>
-                                    <div class="box"><a href="cadastrar_trabalho.php?categoria=3"><img src="assets/images/menu/pro_ativa.png" class="img-responsive" alt="Submeter Resumos" /></a></div>
-                                    <div class="box"><a href="cadastrar_trabalho.php?categoria=9"><img src="assets/images/menu/pos_graduacao.png" class="img-responsive" alt="Submeter Resumos" /></a></div>
-                                    <div class="box"><a href="cadastrar_trabalho.php?categoria=10"><img src="assets/images/menu/material.png" class="img-responsive" alt="Submeter Resumos" /></a></div>
-
-                                    <?php if(TIPO_USUARIO  == ADMINISTRADOR || ( TIPO_USUARIO  == ALUNO_UFOP)|| ( TIPO_USUARIO  == TECNICO_UFOP) || ( TIPO_USUARIO  == PROFESSOR_UFOP)){ ?>
-
                                     <div class="box"><a href="mobilidade_cadastro.php"><img src="assets/images/menu/ss.png" class="img-responsive" alt="Mobilidade Academica" /></a></div>
+                                    <?php if(TIPO_USUARIO  == ADMINISTRADOR || ( TIPO_USUARIO  == ALUNO_UFOP)|| ( TIPO_USUARIO  == TECNICO_UFOP) || ( TIPO_USUARIO  == PROFESSOR_UFOP)){ ?>
+                                    <div class="box"><a href="cadastrar_trabalho.php?categoria=7"><img src="assets/images/menu/pibid.png" class="img-responsive" alt="Submeter Resumo no PIBID" /></a></div>
+                                    <div class="box"><a href="cadastrar_trabalho.php?categoria=6"><img src="assets/images/menu/monitoria.png" class="img-responsive" alt="Submeter Resumos na Mostra de Monitoria" /></a></div>
+                                    <div class="box"><a href="cadastrar_trabalho.php?categoria=3"><img src="assets/images/menu/pro_ativa.png" class="img-responsive" alt="Submeter Resumos na Mostra Pró-Ativa" /></a></div>
+                                    <div class="box"><a href="cadastrar_trabalho.php?categoria=9"><img src="assets/images/menu/pos_graduacao.png" class="img-responsive" alt="Submeter Resumos na Mostra de Pós-Graduação" /></a></div>
+                                    <div class="box"><a href="cadastrar_trabalho.php?categoria=10"><img src="assets/images/menu/material.png" class="img-responsive" alt="Submeter Resumos na Mostra de Material" /></a></div>
+
 
 									<?php } ?>
 
                                     <div class="box"><a href="correcoes.php"><img src="assets/images/menu/ct.png" class="img-responsive" alt="Corrigir Trabalhos" /></a></div>
-
-                                    <?php  if(TIPO_USUARIO  == ADMINISTRADOR){ ?>
-
-                                    <div class="box"><a href="proposta_minicurso.php"><img src="assets/images/menu/er.png" class="img-responsive" alt="Enviar propostas de minicursos" /></a></div>
-
                                     
 
-                                     <?php } if(BOOL_COORDENADOR || TIPO_USUARIO  == ADMINISTRADOR){ ?>
+                                     <?php  if(BOOL_COORDENADOR || TIPO_USUARIO  == ADMINISTRADOR){ ?>
 
                                     <div class="box"><a href="designar_avaliadores.php"><img src="assets/images/menu/da.png" class="img-responsive" alt="Designar Avaliadores" /></a></div>
 
@@ -168,8 +162,6 @@ if ( $_SESSION['logado'] === true ) {
                                     <?php } if(TIPO_USUARIO  == ADMINISTRADOR) { ?>
 
                                     <div class="box"><a href="../intranet/"><img src="assets/images/menu/aa.png" class="img-responsive" alt="Área Administrativa" /></a></div>
-
-                                    <div class="box"><a href="minicursos.php"><img src="assets/images/menu/im.png" class="img-responsive" alt="Inscrever em minicursos" /></a></div>
 
                                     <?php } ?>
 
@@ -459,7 +451,7 @@ if ( $_SESSION['logado'] === true ) {
         <?php 
 		$link_boleto = 0;
 
-            if(CONTA_ATIVADA) 
+            /*if(CONTA_ATIVADA) 
 
                 echo " $('.counter').counterUp({
 
@@ -491,11 +483,11 @@ if ( $_SESSION['logado'] === true ) {
 
                             toastr.error('Em nossos registros ainda não consta o pagamento de sua inscrição. Para realizá-lo clique no botão e pague o boleto gerado. Caso já tenha efetuado, desconsidere essa mensagem.<br /><br /><a href=\"".$link_boleto."\" class=\"btn btn-success\" target=\"_blank\">Pagar Inscrição</button>', 'Atenção');
 
-                        }, 1800);";
+                        }, 1800);";*/
 
             if(CONTA_ATIVADA == 0){
 				
-                echo " $('#pagamento').modal('show');
+                echo " $('#conta_nao_ativada').modal('show');
 
                 ";
 

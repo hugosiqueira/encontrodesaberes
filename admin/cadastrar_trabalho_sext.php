@@ -157,7 +157,7 @@
                     </div>
                     <div class="form-group">
                         <label for="area_especifica">Área Específica*</label>
-                        <select class="form-control" id="area_especifica" name="area_especifica" readonly="readonly" tabindex="-1" required>
+                        <select class="form-control" id="area_especifica" name="area_especifica" required>
                             <option>
                             </option>
                              <?php 

@@ -47,6 +47,7 @@ try {
       $orgao_fomento = 368;
       $protocolo_cep = NULL;
       $protocolo_ceua = NULL; 
+      $programa_ic = 0;
       break;
 
     // Mostra Monitoria
@@ -56,6 +57,7 @@ try {
       $orgao_fomento = 368;
       $protocolo_cep = NULL;
       $protocolo_ceua = NULL; 
+      $programa_ic = 0;
       break;
 
     //Mostra PIBID
@@ -65,6 +67,7 @@ try {
       $orgao_fomento = 368;
       $protocolo_cep = NULL;
       $protocolo_ceua = NULL; 
+      $programa_ic = 0;
       break;
 
     //Mostra PET
@@ -74,6 +77,7 @@ try {
       $orgao_fomento = 368;
       $protocolo_cep = NULL;
       $protocolo_ceua = NULL; 
+      $programa_ic = 0;
       break;
 
     //Mostra Material Didático

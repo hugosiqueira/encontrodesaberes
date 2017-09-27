@@ -48,7 +48,9 @@
 
 			Prezado(a),<br>Agradecemos a sua participação no Encontro de Saberes.<br>Segue o link para baixar o seu certificado:<br><br>http://www.encontrodesaberes.ufop.br/gerar_certificado.php?c=".$certificado->chave_autenticidade."&f=1<br><br>Atenciosamente,<br>Encontro de Saberes.";
 
-
+		$url = 'https://api.sendgrid.com/';
+            $user = 'encontrosaberes';
+            $pass = 'se2015ic';
 
 		$novo_email = array(
 
@@ -110,7 +112,7 @@
 
 		curl_setopt ($session, CURLOPT_POST, true);
 
-		curl_setopt ($session, CURLOPT_POSTFIELDS, $params);
+		@curl_setopt ($session, CURLOPT_POSTFIELDS, $params);
 
 		curl_setopt($session, CURLOPT_HEADER, false);
 

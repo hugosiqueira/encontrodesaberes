@@ -57,23 +57,25 @@ if ( $_SESSION['logado'] === true ) {
                     	<?php if(CONTA_ATIVADA == 1){ ?> 
                         <li><a href="index.php" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-home"></span><p>In&iacute;cio</p></a></li>
                         <li><a href="perfil.php" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-user"></span><p>Meu Cadastro</p></a></li>
-                        <li><a href="meus_resumos.php" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-edit"></span><p>Meus Trabalhos</p><span class="arrow"></span></a></li>
+                        <li><a href="meus_resumos.php" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-edit"></span><p>Trabalhos Submetidos</p><span class="arrow"></span></a></li>
+                        <li class="droplink">
+                        	<a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-upload"></span><p>Submeter Trabalhos</p><span class="arrow"></span></a>
+                        	<ul class="sub-menu">
+                        		<li><a href="http://encontrodesaberes.ufop.br/admin/cadastrar_trabalho.php?categoria=1">Seminário de Iniciação Científica</a></li>
+                        		<li><a href="http://encontrodesaberes.ufop.br/admin/cadastrar_trabalho_sext.php">Seminário de Extensão</a></li>
+                        		<li><a href="http://encontrodesaberes.ufop.br/admin/mobilidade_cadastro.php">Seminário de Internacionalização</a></li>
+                        		<?php } if((TIPO_USUARIO  == ALUNO_UFOP )|| TIPO_USUARIO == ADMINISTRADOR || ( TIPO_USUARIO == PROFESSOR_UFOP) || ( TIPO_USUARIO == TECNICO_UFOP)){ ?>
+                        		<li><a href="http://encontrodesaberes.ufop.br/admin/cadastrar_trabalho.php?categoria=3">Mostra Pró-Ativa</a></li>
+                        		<li><a href="http://encontrodesaberes.ufop.br/admin/cadastrar_trabalho.php?categoria=7">Mostra Pibid</a></li>
+                        		<li><a href="http://encontrodesaberes.ufop.br/admin/cadastrar_trabalho.php?categoria=6">Mostra Monitoria</a></li>
+                        		<li><a href="http://encontrodesaberes.ufop.br/admin/cadastrar_trabalho.php?categoria=9">Mostra da Pós Graduação</a></li>
+                        		<li><a href="#">Mostra de Material Didático</a></li>
+                        		<?php } ?>
+                        	</ul>
+                        </li>
                         <li><a href="correcoes.php" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-edit"></span><p>Corrigir Trabalhos</p><span class="arrow"></span></a></li>
                        
-                        <?php } if(TIPO_USUARIO == ADMINISTRADOR){ ?>
-                         <li class="droplink">
-                        	<a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-cloud"></span><p>Minicursos</p><span class="arrow"></span></a>
-                        	<ul class="sub-menu">
-                        		<?php if(TIPO_USUARIO == ADMINISTRADOR){ ?>
-                        		<li><a href="proposta_minicurso.php">Enviar Proposta de Minicurso</a></li>
-                        		<?php } ?>
-                                <li><a href="minicursos.php">Inscrever em Minicurso</a></li>
-                                
-                            </ul>
-                        </li>
-                        <?php } if((TIPO_USUARIO  == ALUNO_UFOP )|| TIPO_USUARIO == ADMINISTRADOR || ( TIPO_USUARIO == PROFESSOR_UFOP) || ( TIPO_USUARIO == TECNICO_UFOP)){ ?>
-                        <li><a href="mobilidade_cadastro.php" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-globe"></span><p>Submiss&atilde;o SEINTER</p><span class="arrow"></span></a></li>
-
+                        
                         <?php } if(BOOL_COORDENADOR || TIPO_USUARIO == ADMINISTRADOR){ ?>
                         
                         <li><a href="designar_avaliadores.php" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-hand-up"></span><p>Designar Avaliadores</p><span class="arrow"></span></a></li>
@@ -88,7 +90,7 @@ if ( $_SESSION['logado'] === true ) {
                                 
                             </ul>
                         </li>
-                        <?php } }?>
+                        <?php } ?>
                         <li><a href="duvidas.php" class="waves-effect waves-button"><span class="menu-icon  glyphicon glyphicon-question-sign"></span><p>Dúvidas</p></a></li>
                     </ul>
                 </div><!-- Page Sidebar Inner -->

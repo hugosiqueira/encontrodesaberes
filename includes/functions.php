@@ -356,12 +356,10 @@ function getDados($db,  $id_inscrito){
 					"data_nascimento"=>$data_nascimento, "fgk_instituicao"=>$fgk_instituicao, "matricula"=>$matricula, "departamento"=>$departamento, "curso"=>$curso );
 }
 
-function criaBoleto($db, $id_usuario, $id_inscrito_servico, $id_tipo_pagamento){
-
-	$db_evento = $_SESSION['db_evento'];
+function criaBoleto($db, $id_usuario=ID_USUARIO, $id_inscrito_servico, BOLETO){
 
 	//Buscanco os dados necessários para a cobrança
-	$tipo_pagamento = $db->listar($db_evento, 'es_pagamentos_tipos', 'id_tipo_pagamento', $id_tipo_pagamento);
+	$tipo_pagamento = $db->listar('es_pagamentos_tipos', 'id_tipo_pagamento', BOLETO);
 	$client_id = $tipo_pagamento->client;
 	$client_secret = $tipo_pagamento->client_secret;
 	$notification_url = $tipo_pagamento->notification_url;
@@ -369,7 +367,7 @@ function criaBoleto($db, $id_usuario, $id_inscrito_servico, $id_tipo_pagamento){
 	//client_secret == token_url = 'Client_Secret_bc8ad565496920db8fe5d2956d79f2c990d3d037';
 
 	$cliente = array(); //Cria o array com dados necessarios do cliente
-	$rsCliente = $db->listar_condicional(DB_BASE, 'es_usuarios', array('nome, cpf, telefone_celular, email'), array('id'=>$id_usuario));
+	$rsCliente = $db->listar_condicional('es_inscritos', array('nome, cpf, telefone_celular, email'), array('id'=>$id_usuario));
 	foreach($rsCliente as $registro) {
 		$cliente['nome'] = $registro->nome;
 		$cliente['cpf'] = $registro->cpf;
@@ -378,25 +376,25 @@ function criaBoleto($db, $id_usuario, $id_inscrito_servico, $id_tipo_pagamento){
 	}
 
 	$servico = array();
-	$rsServico = $db->listar($db_evento, 'es_inscritos_servicos', 'id_inscrito_servico', $id_inscrito_servico);
+	$rsServico = $db->listar('es_inscritos_servicos', 'id_inscrito_servico', $id_inscrito_servico);
 	$servico['valor'] = intval($rsServico->valor_servico);
 	$id_servico = $rsServico->fgk_servico;
 
-	$rsNomeServ = $db->listar($db_evento, 'es_servicos', 'id_servico', $id_servico);
+	$rsNomeServ = $db->listar('es_servicos', 'id_servico', $id_servico);
 	$servico['nome'] = $rsNomeServ->descricao_servico;
 
 	$cliente['cpf'] = preg_replace("/[^0-9]+/", "", $cliente['cpf']);
 	$cliente['telefone'] = preg_replace("/[^0-9]+/", "", $cliente['telefone']);
 
-	$buscaDataLimite = $db->listar(DB_BASE,'es_eventos', 'id', $_SESSION['id_evento_atual']);
+	$buscaDataLimite = $db->listar('es_eventos', 'id', EVENTO_ATUAL);
 	$db_limite_boleto = $buscaDataLimite->data_max_vencimento_boleto;
 
 	$Hoje = new DateTime();
 	$data_limite = date_create_from_format('Y-m-d', $db_limite_boleto);
 	$diffDays = intval($Hoje->diff($data_limite)->format('%a'), 10);
 
-	if($diffDays > 14)
-		$data_vencimento = date('Y-m-d', strtotime('+14 days'));
+	if($diffDays > 5)
+		$data_vencimento = date('Y-m-d', strtotime('+5 days'));
 	else
 		$data_vencimento = $data_limite;
 
@@ -414,7 +412,7 @@ function criaBoleto($db, $id_usuario, $id_inscrito_servico, $id_tipo_pagamento){
 			'value' => $servico['valor']
 		]],
 		'metadata' => [
-			'custom_id' => $_SESSION['id_evento_atual'],
+			'custom_id' => EVENTO_ATUAL,
 			'notification_url' => $notification_url
 		]
 	];
@@ -423,7 +421,7 @@ function criaBoleto($db, $id_usuario, $id_inscrito_servico, $id_tipo_pagamento){
 		'payment' => [
 			'banking_billet' => [
 				'expire_at' => $data_vencimento,
-				'instructions' => [$_SESSION['formatacao_evento_atual']],
+				'instructions' => ['Não aceitar após a data de vencimento'],
 				'customer' => [ //dados do cliente
 					'name' => $cliente['nome'],
 					'cpf' => $cliente['cpf'],
@@ -443,15 +441,15 @@ function criaBoleto($db, $id_usuario, $id_inscrito_servico, $id_tipo_pagamento){
 		$boleto = $api->payCharge(array('id'=>$id_cobranca), $dadosBoleto); //gera o boleto
 
 		$db->iniciar_transacao();
-		$rsInscritoId = $db->listar($db_evento, 'es_inscritos_servicos', 'id_inscrito_servico', $id_inscrito_servico);
+		$rsInscritoId = $db->listar('es_inscritos_servicos', 'id_inscrito_servico', $id_inscrito_servico);
 		$id_inscrito = $rsInscritoId->fgk_inscrito;
 
 		$boleto_insc_dados = array('fgk_inscrito'=>$id_inscrito, 'data_emissao'=>$Hoje->format('Y-m-d H:i:s'), 'valor'=>$servico['valor'], 'data_vencimento'=>$data_vencimento, 'link'=>$boleto['data']['link'], 'id_cobranca'=>$boleto['data']['charge_id']);
-		$db->inserir($db_evento, 'es_inscritos_boletos', $boleto_insc_dados);
+		$db->inserir('es_inscritos_boletos', $boleto_insc_dados);
 
 		$last_id_boleto = $db->lastInsertId();
 
-		$db->atualizar($db_evento, 'es_inscritos_servicos', array('fgk_boleto'=>$last_id_boleto), 'id_inscrito_servico', $id_inscrito_servico);
+		$db->atualizar('es_inscritos_servicos', array('fgk_boleto'=>$last_id_boleto), 'id_inscrito_servico', $id_inscrito_servico);
 
 		$db->commit();
 
@@ -563,7 +561,7 @@ function dadosTrabalho($db,  $id_trabalho){
 	datahora_registro, datahora_submissao, datahora_ultima_atualizacao, codigo_area, descricao_area, 
 	descricao_area_especifica, es_orgao_fomento.nome as orgao_fomento, es_orgao_fomento.sigla as sigla_orgao_fomento,
 	es_instituicao.nome as instituicao, es_instituicao.sigla as sigla_instituicao, descricao_status,
-	descricao_categoria, sigla_categoria
+	descricao_categoria, sigla_categoria, fgk_programa_ic
 	
 	FROM es_trabalho 
 	LEFT JOIN es_ufop_areas ON (es_ufop_areas.id_area = es_trabalho.fgk_area) 
@@ -608,6 +606,7 @@ function dadosTrabalho($db,  $id_trabalho){
 		$codigo_area 				= $registro->codigo_area;
 		$descricao_area 			= $registro->descricao_area;;
 		$descricao_area_especifica 	= $registro->descricao_area_especifica;
+		$fgk_programa_ic			= $registro->fgk_programa_ic;
 	}
 	
 	return array ("id_area"=>$id_area,"id_area_especifica"=>$id_area_especifica, "id_projeto"=>$id_projeto,
@@ -621,7 +620,7 @@ function dadosTrabalho($db,  $id_trabalho){
 	"instituicao"=>$instituicao,"sigla_instituicao"=>$sigla_instituicao,"descricao_categoria"=>$descricao_categoria,
 	"sigla_categoria"=>$sigla_categoria, "orgao_fomento"=>$orgao_fomento,
 	"sigla_orgao_fomento"=>$sigla_orgao_fomento, "codigo_area"=>$codigo_area,
-	"descricao_area"=>$descricao_area, "descricao_area_especifica"=>$descricao_area_especifica);
+	"descricao_area"=>$descricao_area, "descricao_area_especifica"=>$descricao_area_especifica, "fgk_programa_ic"=>$fgk_programa_ic);
 }
 
 function verificaDesconto($db,  $cpf){

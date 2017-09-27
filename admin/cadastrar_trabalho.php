@@ -261,7 +261,7 @@ select[readonly] {
                             <p class="help-block"></p>
                         </div>
                         <div class="form-group">
-                            <label for="palavras_chave">Palavras-Chave</label>
+                            <label for="palavras_chave">Palavras-Chave (No máximo 6 palavras-chave)</label>
                             <input type="text" class="form-control" id="palavras_chave" name="palavras_chave" placeholder="">
                             <p class="help-block"></p>
                         </div>
@@ -376,8 +376,8 @@ $(function(){
                 div_autor += "<div class='form-group col-md-5'><label for='instituicao_autor"+i+"'>Instituição</label><select class='form-control' id='instituicao_autor"+i+"' name='instituicao_autor"+i+"' data-required><option></option>";
                 div_autor += "<?php $stmt = $db->sql_query('SELECT * FROM es_instituicao ORDER BY nome'); foreach ($stmt as $instituicao) { echo '<option value=\"'.$instituicao->id.'\" >'.$instituicao->nome.'</option>'; } ?></select> </div>";
                 div_autor += "<div class='form-group col-md-4'><label for='tipo_autor"+i+"'>Tipo de Autor</label><select class='form-control' id='tipo_autor"+i+"' name='tipo_autor"+i+"' data-required><option></option>";
-                div_autor += "<?php $stmt = $db->sql_query('SELECT * FROM es_tipo_autor');foreach ($stmt as $autor) {echo '<option value=\"'.$autor->id_tipo_autor.'\"  >'.$autor->descricao_tipo.' </option>';}?></select></div>";
-                div_autor += "<div class='form-group col-md-3'><label for='apresentador"+i+"'>Apresentador</label><select class='form-control' id='apresentador"+i+"' name='apresentador"+i+"' data-required><option value=0>Não</option><option value=1>Sim</option></select></div>";
+                div_autor += "<?php $stmt = $db->sql_query('SELECT * FROM es_tipo_autor WHERE es_tipo_autor.descricao_tipo <> "Autor" AND es_tipo_autor.descricao_tipo <> "Colaborador"');foreach ($stmt as $autor) {echo '<option value=\"'.$autor->id_tipo_autor.'\"  >'.$autor->descricao_tipo.' </option>';}?></select></div>";
+               
                 $("#varia").append(div_autor).clone(true);
                 $('#cpf_autor'+i).mask('000.000.000-00');
                 $('#cpf_autor'+i).prop('required',true);

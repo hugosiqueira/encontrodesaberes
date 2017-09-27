@@ -26,7 +26,7 @@ if ( $_SESSION['logado'] === true ) {
                 <div id="main-wrapper">
                     <?php
                     
-                    if((TIPO_USUARIO == 1 || TIPO_USUARIO == 5) && (DATA_SUBMISSAO_INI <=date('Y-m-d') && DATA_SUBMISSAO_FIM >=date('Y-m-d'))){
+                    if((TIPO_USUARIO == 1 || TIPO_USUARIO == 5 || TIPO_USUARIO == 3) && (DATA_SUBMISSAO_INI <=date('Y-m-d') && DATA_SUBMISSAO_FIM >=date('Y-m-d'))){
                         if($db->existe('es_trabalho_caint', array('cpf' => CPF_USUARIO, 'fgk_evento'=>EVENTO_ATUAL)) ){ 
                             $dados_trabalho = $db->sql_query("SELECT * FROM es_trabalho_caint WHERE cpf = ? AND fgk_evento = ?", array('cpf'=>CPF_USUARIO, 'fgk_evento' => EVENTO_ATUAL));
                             foreach ($dados_trabalho as $registro) {
@@ -135,7 +135,7 @@ if ( $_SESSION['logado'] === true ) {
                                             </div>
                                             <div class="form-group">
                                                 <label for="curso_aluno">Curso: </label>
-                                                <input type="text" class="form-control" id="curso_aluno" value="<?=$curso_aluno;?>" disabled>
+                                                <input type="text" class="form-control" id="curso_aluno" value="<?=$curso_aluno;?>" <?=(!isset($disabled)) ? '' : $disabled;?>>
                                                 <p class="help-block"></p>
                                             </div>
                                             <div class="form-group">
@@ -153,7 +153,7 @@ if ( $_SESSION['logado'] === true ) {
                                                 <select id="tipo_mobilidade" class="form-control" <?=(!isset($disabled)) ? '' : $disabled;?>>
                                                     <option></option>
                                                     <option value="1">Ciência sem Fronteiras</option>
-                                                    <option value="2">Mobilidade CAINT</option>
+                                                    <option value="2">Mobilidade Convênio</option>
                                                 </select>
                                                 <p class="help-block"></p>
                                             </div>
@@ -321,7 +321,7 @@ if ( $_SESSION['logado'] === true ) {
     <script src="assets/js/pages/mobilidade.js"></script>
     <script type="text/javascript">
     <?php
-    if($tipo_mobilidade){
+    if(isset($tipo_mobilidade)){
     ?>
     $(document).ready(function() {
         $("#tipo_mobilidade option[value='<?=$tipo_mobilidade;?>']").prop('selected', true);

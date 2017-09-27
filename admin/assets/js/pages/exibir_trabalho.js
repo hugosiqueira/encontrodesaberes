@@ -79,6 +79,7 @@ $(document).ready(function() {
 				var apoio_financeiro = $('#apoio_financeiro').val();
 				var protocolo_ceua = $('#protocolo_ceua').val();
 				var protocolo_cep =  $('#protocolo_cep').val();
+                var programa_ic =  $('#programa_ic').val();
 				var resumo_enviado = resumo_enviado.replace(/&/g, "&amp;")
                 var resumo_enviado = resumo_enviado.replace(/</g, "&lt;")
                 var resumo_enviado = resumo_enviado.replace(/>/g, "&gt;")
@@ -94,7 +95,7 @@ $(document).ready(function() {
                 $.post('enviar_resumo.php', {
                     area: area, area_especifica: area_especifica, palavras_chave: palavras_chave, resumo_enviado: resumo_enviado, 
                     id_trabalho: id_trabalho, fgk_status:1, titulo: titulo, orgao_fomento: orgao_fomento, categoria: categoria, protocolo_cep: protocolo_cep,
-					protocolo_ceua:protocolo_ceua, apoio_financeiro:apoio_financeiro }, 
+					protocolo_ceua:protocolo_ceua, apoio_financeiro:apoio_financeiro, programa_ic: programa_ic }, 
                     function(resposta) {
                         if (resposta == "sucesso") {
                             // Exibe o erro na div
@@ -196,12 +197,13 @@ $(document).ready(function() {
                 var titulo = $('#titulo').val();
                 var orgao_fomento = $('#orgao_fomento').val();
                 var area = $("#area").val();
+                var programa_ic = $('#programa_ic').val();
 
 
                 // Fazemos a requisão ajax com o arquivo envia.php e enviamos os valores de cada campo através do método POST
                 $.post('enviar_resumo.php', { area: area, area_especifica: area_especifica, palavras_chave: palavras_chave, resumo_enviado: resumo_enviado, 
                     id_trabalho: id_trabalho, fgk_status: 2, titulo: titulo, orgao_fomento: orgao_fomento, categoria: categoria, protocolo_cep: protocolo_cep,
-					protocolo_ceua:protocolo_ceua, apoio_financeiro:apoio_financeiro }, 
+					protocolo_ceua:protocolo_ceua, apoio_financeiro:apoio_financeiro, programa_ic: programa_ic }, 
                     function(resposta) {
                         // Quando terminada a requisição
                         // Exibe a div status

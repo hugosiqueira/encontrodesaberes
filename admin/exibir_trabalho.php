@@ -40,6 +40,13 @@ if ( $_SESSION['logado'] === true ) {
 ?>   
 <style type="text/css">
     .frameResults { border-style: solid; border-width: 1px; height: 550px;}
+
+select[readonly] {
+  background: #eee; 
+  pointer-events: none;
+  touch-action: none;
+}
+
     </style>
     <script type="text/javascript" src="assets/js/diff.js"></script>
     </head>
@@ -138,7 +145,7 @@ if ( $_SESSION['logado'] === true ) {
 										<select class='form-control' id='tipo_autor' name='tipo_autor' required>
 											<option>Selecione a função do autor</option>
 											<?php 
-											$stmt = $db->sql_query('SELECT * FROM es_tipo_autor WHERE descricao_tipo <> "Autor"');
+											$stmt = $db->sql_query('SELECT * FROM es_tipo_autor WHERE descricao_tipo <> "Autor" AND descricao_tipo <> "Colaborador"');
 											foreach ($stmt as $autor) {
 												echo '<option value="'.$autor->id_tipo_autor.'"  >'.$autor->descricao_tipo.' </option>';
 											}
@@ -207,7 +214,7 @@ if ( $_SESSION['logado'] === true ) {
                                                             <td>$autores->cpf</td>
                                                             <td>$autores->email</td>";
                                                     
-													if(($autores->bool_apresentador == 1 || $trabalho["id_inscrito_responsavel"] != ID_USUARIO) )
+													if(($autores->bool_apresentador == 1 || $trabalho["id_inscrito_responsavel"] != ID_USUARIO || $trabalho['id_status']!= TRABALHO_NAO_ENVIADO  ) )
                                                         echo"<td></td>";
                                                     else
                                                         echo "<td><a class='btn btn-danger' onClick='confirmaExcluir($autores->id_autor);''>Excluir Autor</a></td>";
@@ -227,10 +234,11 @@ if ( $_SESSION['logado'] === true ) {
                             <div class="panel panel-white">
                                 <div class="panel-body">                                   
                                     <form id="form_trabalho" name="form_trabalho" action="javascript:void(0);">
+                                    	<input type="hidden" id="id_trabalho" name="id_trabalho" value="<?=$id_trabalho;?>">
 										<div class="col-md-6">
 											<div class='form-group'>
 												<label for='categoria'>Evento em que vai apresentar o trabalho*</label>
-												<select class='form-control' id='categoria' name='categoria' required>
+												<select class='form-control' id='categoria' name='categoria' required readonly="readonly">
 													
 													<option></option>
 													<option value=1 <?php if($trabalho["id_categoria"] == 1) echo "selected"; ?>>SEIC - Seminário de Iniciação Científica</option>
@@ -244,9 +252,10 @@ if ( $_SESSION['logado'] === true ) {
 												</select>
 												<p class="help-block"></p>
 											</div>
+											<?php if($trabalho["id_categoria"] == 1 || $trabalho["id_categoria"] == 9) { ?>
 											<div class="form-group">
 
-												<input type="hidden" id="id_trabalho" value="<?=$id_trabalho;?>">
+												
 												
 												<label for="area">Área de conhecimento</label>
 												<select class="form-control" id="area" name="area" <?=$edicao;?> <?=$disabled;?>>
@@ -267,6 +276,7 @@ if ( $_SESSION['logado'] === true ) {
 														?>
 												</select>
 											</div>
+
 											<div class="form-group">
 												<label for="area_especifica">Área Específica</label>
 												<select class="form-control" id="area_especifica" name="area_especifica" <?=$disabled;?> <?=$edicao;?>>
@@ -279,7 +289,7 @@ if ( $_SESSION['logado'] === true ) {
 															$stmt = $db->sql_query("SELECT *
 															  FROM es_area_especifica
 															  WHERE fgk_area = ?
-															  ORDER BY descricao_area_especifica", array('fgk_area'=> $id_area));
+															  ORDER BY descricao_area_especifica", array('fgk_area'=> $trabalho['id_area']));
 															foreach ($stmt as $peq_area) {
 																if($id_area_especifica == $peq_area->id)
 																	$select_peqarea = "selected";
@@ -292,8 +302,44 @@ if ( $_SESSION['logado'] === true ) {
 														?>
 												</select>
 											</div>
-											<?php if($trabalho["id_categoria"] == 1) { ?>
-												<div class="form-group">
+											<?php } if($trabalho["id_categoria"] == 2) { ?>
+											<div class="form-group">
+												<label for="area_especifica">Área Específica</label>
+												<select class="form-control" id="area_especifica" name="area_especifica" <?=$disabled;?> <?=$edicao;?>>
+														<option>
+														</option>
+														<?php
+															if($trabalho["id_area_especifica"]){
+															echo '<option value="'.$trabalho["id_area_especifica"].'" selected >'.$trabalho["descricao_area_especifica"].'</option>';  
+															} else {
+															$stmt = $db->sql_query("SELECT *
+															  FROM es_area_especifica
+															  WHERE fgk_area = ?
+															  ORDER BY descricao_area_especifica", array('fgk_area'=> 7));
+															foreach ($stmt as $peq_area) {
+																if($id_area_especifica == $peq_area->id)
+																	$select_peqarea = "selected";
+																else 
+																	$select_peqarea = "";
+																echo '<option value="'.$peq_area->id.'" '.$select_peqarea.' >'.$peq_area->descricao_area_especifica.'</option>';
+															}
+														}
+													  
+														?>
+												</select>
+											</div>
+											<?php } ?>
+											<div class="form-group">
+												<label for="apoio_financeiro"> Apoio Financeiro</a></label>
+												<input type="text" class="form-control" id="apoio_financeiro" name = 'apoio_financeiro' value="<?=$trabalho["apoio_financeiro"];?>"/>
+												<p class="help-block"></p>
+											</div>
+
+										</div>
+										<?php if($trabalho["id_categoria"] == 1 || $trabalho["id_categoria"] == 9) { ?>
+
+										<div class="col-md-6">
+											<div class="form-group">
 													<label for="orgao_fomento">Órgão de fomento</label>
 													<select class="form-control" id="orgao_fomento" name="orgao_fomento" required <?=$edicao;?>>
 														<option>
@@ -314,10 +360,29 @@ if ( $_SESSION['logado'] === true ) {
 													</select>
 													<p class="help-block"></p>
 												</div>
-												<?php } ?>
+											<div class="form-group">
+												<label for="programa_ic">Programa de Iniciação Científica</label>
+												<select class="form-control" id="programa_ic" name="programa_ic">
+													<option value =0>Não possui Programa de Iniciação Científica</option>
+													<?php
+													$stmt = $db->sql_query("SELECT *
+													  FROM es_programa_ic 
+													  ORDER BY sigla ASC");
+													
+
+													foreach ($stmt as $programa) {
+														if($trabalho["fgk_programa_ic"] == $programa->id)
+																		$select_programa = "selected='selected'";
+																	else 
+																		$select_programa = "";
+														
+														echo '<option value="'.$programa->id.'" '.$select_programa.'>'.$programa->sigla.' - '.$programa->nome.'</option>';
+													}
+													?>
+												</select>
+												<p class="help-block"></p>
 											</div>
-										<?php if($trabalho["id_categoria"] == 1) { ?>
-										<div class="col-md-6">
+									
 											<div class="form-group">
 													<label for="aluno"> Número do Protocolo <a href="http://www.comitedeetica.ufop.br/" target="_blank">CEP</a></label>
 													<input type="text" class="form-control" id="protocolo_cep" name = "protocolo_cep" value="<?=$trabalho["protocolo_cep"];?>" placeholder="Número do Protocolo do Comitê de Ética em Pesquisa" />
@@ -328,13 +393,11 @@ if ( $_SESSION['logado'] === true ) {
 												<input type="text" class="form-control" id="protocolo_ceua" name="protocolo_ceua" value="<?=$trabalho["protocolo_ceua"];?>" placeholder="Número do Protocolo do Comissão de Ética no Uso de Animais" />
 												<p class="help-block"></p>
 											</div>
-											<div class="form-group">
-												<label for="apoio_financeiro"> Apoio Financeiro</a></label>
-												<input type="text" class="form-control" id="apoio_financeiro" name = 'apoio_financeiro' value="<?=$trabalho["apoio_financeiro"];?>"/>
-												<p class="help-block"></p>
-											</div>
+
+											<?php } ?>
+											
 		                                </div>
-		                                <?php } ?>
+		                                
 		                            </div>
 		                        </div>
                         
@@ -346,7 +409,7 @@ if ( $_SESSION['logado'] === true ) {
                                             <textarea class="form-control" rows="2" id="titulo" <?=$disabled;?> ><?=$trabalho["titulo_enviado"];?></textarea>
                                         </div>
                                         <div class="form-group">
-                                            <label for="palavras_chave">Palavras-Chave</label>
+                                            <label for="palavras_chave">Palavras-Chave (No máximo 6 palavras-chave)</label>
                                             <input type="text" class="form-control" id="palavras_chave" placeholder="" value="<?=$trabalho["palavras_chave_enviado"];?>"<?=$disabled;?>>
                                         </div>
 										<?php

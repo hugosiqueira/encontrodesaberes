@@ -274,7 +274,7 @@ $(document).ready(function() {
         if($("#mobilidade").valid())
         {
             $("#processando").modal("show");
-            $("#mobilidade").submit(function() {
+
                 // Colocamos os valores de cada campo em uma váriavel para facilitar a manipulação
                 var cpf = $("#cpf").val();
                 var nome_aluno = $("#nome_aluno").val();
@@ -382,7 +382,7 @@ $(document).ready(function() {
 
                         }
                 });
-            });
+
 
         }  else {
             return false;

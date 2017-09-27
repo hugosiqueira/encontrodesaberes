@@ -113,6 +113,10 @@ if ( $_SESSION['logado'] === true ) {
                                                                 else
                                                                     echo $autor->nome.' ('.$autor->sigla.')<br>';
                                                             }
+                                                            if(ID_USUARIO == $resumo->fgk_inscrito_responsavel && ($resumo->fgk_status == TRABALHO_NAO_ENVIADO ))
+                                                                echo '<td><a class="btn btn-primary" href="exibir_trabalho.php?id='.$resumo->id_trabalho.'">Editar Submissão</a></td>';
+
+                                                            else
                                                             echo '</td><td>'.$resumo->descricao_status.'</td>';
 
                                                            // if($resumo->apresentacao_obrigatoria == 1)

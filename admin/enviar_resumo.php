@@ -39,6 +39,7 @@ if ( $_SESSION['logado'] === true ) {
       $orgao_fomento = 368;
       $protocolo_cep = NULL;
       $protocolo_ceua = NULL; 
+      $programa_ic = 0;
       break;
 
     // Mostra Monitoria
@@ -48,6 +49,7 @@ if ( $_SESSION['logado'] === true ) {
       $orgao_fomento = 368;
       $protocolo_cep = NULL;
       $protocolo_ceua = NULL; 
+      $programa_ic = 0;
       break;
 
     //Mostra PIBID
@@ -56,7 +58,8 @@ if ( $_SESSION['logado'] === true ) {
       $area_especifica = 105;
       $orgao_fomento = 368;
       $protocolo_cep = NULL;
-      $protocolo_ceua = NULL; 
+      $protocolo_ceua = NULL;
+      $programa_ic = 0; 
       break;
 
     //Mostra PET
@@ -65,25 +68,26 @@ if ( $_SESSION['logado'] === true ) {
       $area_especifica = 106;
       $orgao_fomento = 368;
       $protocolo_cep = NULL;
-      $protocolo_ceua = NULL; 
+      $protocolo_ceua = NULL;
+      $programa_ic = 0;
       break;
 
-    //Mostra Pós-Graduação
-    case 9:
-      $area = 12;
-      $area_especifica = 116;
-      $orgao_fomento = 368;
-      $protocolo_cep = NULL;
-      $protocolo_ceua = NULL; 
-      break;
-
-    //Mostra Material Didático
+      //Mostra Material Didático
     case 10:
       $area = 13;
       $area_especifica = 117;
       $orgao_fomento = 368;
       $protocolo_cep = NULL;
       $protocolo_ceua = NULL; 
+      $programa_ic = 0;
+      break;
+
+    case 2:
+     $area = 7;
+      $orgao_fomento = 368;
+      $protocolo_cep = NULL;
+      $protocolo_ceua = NULL; 
+      $programa_ic = 0;
       break;
   }
 
@@ -103,7 +107,8 @@ if ( $_SESSION['logado'] === true ) {
       'datahora_submissao' => $datahora_submissao,
 	  'apoio_financeiro' => $apoio_financeiro, 
 	  'protocolo_cep' => $protocolo_cep,
-	  'protocolo_ceua' => $protocolo_ceua
+	  'protocolo_ceua' => $protocolo_ceua,
+    'fgk_programa_ic' =>$programa_ic
 
       );
       
@@ -113,7 +118,7 @@ if ( $_SESSION['logado'] === true ) {
           foreach ($sel_autores as $autores) {
            
 
-            $mensagem_text = 'Prezado(a) '.$autores->nome.',
+            $mensagem = 'Prezado(a) '.$autores->nome.',
                          <h3>Trabalho submetido.</h3>
 						<p>Prezado(a) '.$autores->nome.',<br>
 						<p>Recebemos o resumo do seu trabalho científico,'.$titulo.', para o Encontro de Saberes. </p>
@@ -126,44 +131,12 @@ if ( $_SESSION['logado'] === true ) {
 						<p>Atenciosamente,</p>
 						<p>Encontro de Saberes</p>';
 
-            $url = 'https://api.sendgrid.com/';
-            $user = 'encontrosaberes';
-            $pass = 'se2015ic';
+            $enviar_email = envia_email( SENDGRID_API_KEY, $autores->email, "Encontro de Saberes - Trabalho submetido", $mensagem, 'Trabalho Submetido', $remetente="encontrodesaberes@ufop.br" );
 
-            $json_string = array(
-              'category' => 'Trabalho Submetido'
-            );
-
-
-            $params = array(
-                'api_user'  => $user,
-                'api_key'   => $pass,
-                'x-smtpapi' => json_encode($json_string),
-                'to'        => $autores->email,
-                'subject'   => 'Encontro de Saberes - Trabalho submetido',
-                'html'      => $mensagem_text,
-                'text'      => $mensagem_text,
-                'from'      => 'encontrodesaberes@ufop.br'
-              );
-
-
-            $request =  $url.'api/mail.send.json';
-
-            // Generate curl request
-            $session = curl_init($request);
-            // Tell curl to use HTTP POST
-            curl_setopt ($session, CURLOPT_POST, true);
-            // Tell curl that this is the body of the POST
-            curl_setopt ($session, CURLOPT_POSTFIELDS, $params);
-            // Tell curl not to return headers, but do return the response
-            curl_setopt($session, CURLOPT_HEADER, false);
-            // Tell PHP not to use SSLv3 (instead opting for TLS)
-            curl_setopt($session, CURLOPT_SSLVERSION, CURL_SSLVERSION_TLSv1_2);
-            curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
-
-            // obtain response
-            $response = curl_exec($session);
-            curl_close($session);
+            if(!$enviar_email){
+              echo "Houve um erro ao enviar o e-mail de confirmação.";
+              exit;
+            }
           }
         }
         
